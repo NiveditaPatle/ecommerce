@@ -8,6 +8,8 @@ import { Container } from './styles/Container';
 import FormatPrice from './Helpers/FormatPrice';
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
+import Star from './Components/Star';
+import AddtoCart from './Components/AddtoCart';
 
 const API = "https://api.pujakaitem.com/api/products"
 
@@ -54,8 +56,7 @@ function SingleProduct() {
           {/* product Data  */}
           <div className='product-data'>
             <h2>{name}</h2>
-            <p>{stars}</p>
-            <p>{reviews}</p>
+            <Star stars={stars} reviews={reviews} />
             <p className='product-data-price'>
               MRP:
               <del>
@@ -102,6 +103,10 @@ function SingleProduct() {
               </p>
             </div>
 
+            <hr/>
+            {
+              stock > 0 && <AddtoCart product={singleProduct}/>
+            }
           </div>
         </div>
       </Container>
